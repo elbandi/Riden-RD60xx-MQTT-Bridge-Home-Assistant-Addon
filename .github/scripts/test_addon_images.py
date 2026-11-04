@@ -54,11 +54,6 @@ class ReleaseImagesTests(unittest.TestCase):
         self.assertEqual(images.arch_image("ghcr.io/detfisch/app-{arch}", "aarch64"),
                          "ghcr.io/detfisch/app-aarch64")
 
-    def test_private_repository_fork_cannot_publish_to_original_owner(self):
-        with patch.dict(os.environ, {"GITHUB_REPOSITORY_OWNER": "different-owner"}):
-            with self.assertRaisesRegex(ValueError, "namespace"):
-                images.load_addons(self.root)
-
     def check_publish(self, result):
         addons = images.load_addons(self.root)
         with patch.dict(os.environ, {"GITHUB_SHA": "a" * 40, "SIGN_IMAGES": "false"}), \

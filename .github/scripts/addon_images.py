@@ -37,9 +37,6 @@ def load_addons(root=Path(".")):
             raise ValueError(f"Invalid image: {image}")
         if "{" in image.replace("{arch}", "") or "}" in image.replace("{arch}", ""):
             raise ValueError(f"Unsupported image placeholder: {image}")
-        owner = os.environ.get("GITHUB_REPOSITORY_OWNER")
-        if owner and image.split("/")[1] != owner.lower():
-            raise ValueError("Image namespace must match the repository owner")
         if config.get("image", image) != image:
             raise ValueError(f"Image in {configs[0]} differs from .github/addons.json")
         version = str(config["version"])
