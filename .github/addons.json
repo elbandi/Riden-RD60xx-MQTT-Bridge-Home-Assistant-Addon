@@ -1,7 +1,7 @@
 [
   {
     "path": "riden_rd60xx_home_assistant_addon",
-    "image": "ghcr.io/detfisch/riden_rd60xx_home_assistant_addon",
+    "image": "ghcr.io/elbandi/riden_rd60xx_home_assistant_addon",
     "smoke": {
       "entrypoint": "python",
       "args": [
